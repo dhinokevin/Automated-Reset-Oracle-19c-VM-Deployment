@@ -1,0 +1,23 @@
+## Resources
+
+### Oracle Database 19c
+- [Oracle Database Documentation 19c](https://docs.oracle.com/en/database/oracle/oracle-database/19/) – Official documentation for Oracle Database 19c, covering everything from installation to advanced database management.
+- [Oracle Data Pump Documentation](https://docs.oracle.com/en/database/oracle/oracle-database/19/dbrms/oracle-data-pump.html) – Learn about `impdp` (import) and `expdp` (export) commands used for exporting and importing schemas and data.
+
+### Java and Spring Boot
+- [Official Java Documentation](https://docs.oracle.com/en/java/) – The best place to start for understanding Java programming concepts and APIs.
+- [Spring Boot Documentation](https://docs.spring.io/spring-boot/index.html) – Official documentation for Spring Boot, covering how to set up and develop applications, including REST APIs and database integration.
+- [Spring Guides](https://spring.io/guides) – A collection of tutorials for building different types of Spring Boot applications, including RESTful services and integrating with databases.
+  
+### Azure Blob Storage and Azure SDK for Java
+- [Azure Blob Storage Documentation](https://learn.microsoft.com/en-us/azure/storage/blobs/) – Official documentation for working with Azure Blob Storage, including how to use SAS tokens and manage containers.
+- [Azure SDK for Java Documentation](https://learn.microsoft.com/en-us/azure/developer/java/?view=azure-java-stable) – Documentation and tutorials on how to interact with Azure Blob Storage and other Azure services using Java.
+- [Azure Functions Event Grid Blob Trigger (Java)](https://learn.microsoft.com/en-us/azure/azure-functions/functions-event-grid-blob-trigger?pivots=programming-language-java) – Learn how to trigger Azure Functions based on Blob events in Java.
+
+### REST APIs and Web Services
+- [REST API Tutorial](https://www.restapitutorial.com/) – A comprehensive guide to designing RESTful APIs, including best practices for endpoints, HTTP methods, and status codes.
+- [Building a RESTful Web Service with Spring Boot](https://spring.io/guides/gs/rest-service) – A beginner-friendly guide to building a REST API using Spring Boot.
+
+### Logging and Monitoring
+- [Azure Monitor Documentation](https://learn.microsoft.com/en-us/azure/azure-monitor/) – Azure’s service for collecting, analyzing, and acting on telemetry data from your applications and infrastructure.
+- [Spring Boot Logging Documentation](https://docs.spring.io/spring-boot/reference/features/logging.html#features.logging) – Learn how to use Spring Boot's logging features, including integration with popular frameworks like Logback.

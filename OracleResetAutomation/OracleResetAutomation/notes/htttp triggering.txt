@@ -1,0 +1,80 @@
+1. Using Postman to Send the HTTP Request
+Postman is a popular API testing tool that allows you to easily send HTTP requests and view responses. Here's how you can use it:
+
+Step 1: Open Postman
+Download and install Postman if you haven't already: Download Postman.
+Step 2: Configure the Request in Postman
+Set the HTTP method:
+
+In the dropdown menu on the left side of the URL bar, select POST.
+Enter the URL:
+
+In the URL bar, enter the endpoint for triggering the reset. For example:
+bash
+Copy code
+http://localhost:8080/start-database-reset
+This is assuming that your API is running locally on port 8080. If it's hosted elsewhere, use the appropriate URL.
+Set the Request Body:
+
+Click on the Body tab in Postman.
+
+Select raw and then choose JSON from the dropdown list on the right.
+
+Paste the following JSON into the body section:
+
+json
+Copy code
+{
+    "azure_connection_string": "DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey;EndpointSuffix=core.windows.net",
+    "container_name": "backup-container",
+    "blob_name": "backup.dmp",
+    "db_connection_string": "jdbc:oracle:thin:@localhost:1521:ORCL",
+    "db_username": "SYSTEM",
+    "db_password": "Admin1234",
+    "import_parameters": "remap_schema=old_schema:new_schema"
+}
+Step 3: Send the Request
+Click the Send button to submit the request.
+Step 4: View the Response
+Postman will display the response from the server in the lower section of the window.
+If everything is configured properly, you will see a response like:
+json
+Copy code
+{
+    "status": "Started",
+    "message": "Database reset process initiated. You will receive updates via Microsoft Teams."
+}
+If there are any issues with the request, Postman will show you the error message and status code.
+
+2. Using cURL to Send the HTTP Request
+You can also use cURL, which is a command-line tool for transferring data via URLs.
+
+Step 1: Open your terminal or command prompt
+If you are on Windows, open Command Prompt or PowerShell.
+If you are on Mac/Linux, open Terminal.
+Step 2: Send the Request Using cURL
+Run the following command in the terminal:
+
+bash
+Copy code
+curl -X POST http://localhost:8080/start-database-reset \
+     -H "Content-Type: application/json" \
+     -d '{
+           "azure_connection_string": "DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey;EndpointSuffix=core.windows.net",
+           "container_name": "backup-container",
+           "blob_name": "backup.dmp",
+           "db_connection_string": "jdbc:oracle:thin:@localhost:1521:ORCL",
+           "db_username": "SYSTEM",
+           "db_password": "Admin1234",
+           "import_parameters": "remap_schema=old_schema:new_schema"
+         }'
+Step 3: View the Response
+After running the command, you should see a response similar to:
+
+json
+Copy code
+{
+    "status": "Started",
+    "message": "Database reset process initiated. You will receive updates via Microsoft Teams."
+}
+If there’s an error, the response will show the error message and HTTP status code.
