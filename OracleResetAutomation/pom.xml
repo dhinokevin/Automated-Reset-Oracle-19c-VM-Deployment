@@ -20,21 +20,21 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>3.4.1</version>
+            <version>3.4.2</version>
         </dependency>
 
         <!-- Spring Boot Starter Logging -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-logging</artifactId>
-            <version>3.4.1</version>
+            <version>3.4.2</version>
         </dependency>
 
         <!-- Spring Boot Actuator -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
-            <version>3.4.1</version>
+            <version>3.4.2</version>
         </dependency>
 
         <!-- Oracle JDBC Driver -->

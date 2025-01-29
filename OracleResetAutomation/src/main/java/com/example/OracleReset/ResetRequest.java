@@ -12,8 +12,10 @@ public class ResetRequest {
     private String containerName;
     private String blobName;
     private List<String> mailIds;
+    private String schemas;       // New field for schemas
+    private String downloadPath;  // New field for custom download path
 
-    // Getters and setters
+    // Getters and Setters
     public String getConnectionString() {
         return connectionString;
     }
@@ -84,5 +86,21 @@ public class ResetRequest {
 
     public void setMailIds(List<String> mailIds) {
         this.mailIds = mailIds;
+    }
+
+    public String getSchemas() { // Getter for schemas
+        return schemas;
+    }
+
+    public void setSchemas(String schemas) { // Setter for schemas
+        this.schemas = schemas;
+    }
+
+    public String getDownloadPath() { // Getter for download path
+        return downloadPath;
+    }
+
+    public void setDownloadPath(String downloadPath) { // Setter for download path
+        this.downloadPath = downloadPath;
     }
 }

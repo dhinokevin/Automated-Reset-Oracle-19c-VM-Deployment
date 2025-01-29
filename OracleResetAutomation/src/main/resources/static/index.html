@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database Reset Request</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <img src="/images/PngItem_166962.png" class="falling-leaf leaf1" alt="Feuille 1">
+    <img src="/images/PngItem_166962.png" class="falling-leaf leaf2" alt="Feuille 2">
+    <img src="/images/PngItem_166962.png" class="falling-leaf leaf3" alt="Feuille 3">
+    <img src="/images/PngItem_166962.png" class="falling-leaf leaf4" alt="Feuille 4">
+    <img src="/images/PngItem_166962.png" class="falling-leaf leaf5" alt="Feuille 5">
+    <img src="/images/PngItem_166962.png" class="falling-leaf leaf6" alt="Feuille 6">
+    <img src="/images/PngItem_166962.png" class="falling-leaf leaf7" alt="Feuille 7">
+    <div id="stars"></div>
+    <div class="container">
+        <div class="form-card">
+            <div class="form-header">
+                <h1>Database Reset Request</h1>
+                <div class="theme-toggle">
+                    <button id="themeButton" aria-label="Toggle theme">🌙</button>
+                </div>
+            </div>
+            
+            <form id="resetForm">
+                <!-- Progress Bar -->
+                <div class="progress-container">
+                    <div class="progress-bar" id="progressBar"></div>
+                </div>
+
+                <!-- Connection Details -->
+                <fieldset class="section active" data-section="1">
+                    <legend><span class="section-number">1</span> Connection Details</legend>
+                    <div class="grid">
+                        <div class="input-group">
+                            <label for="connectionString">Connection String</label>
+                            <input type="text" name="connectionString" id="connectionString" class="animated-input">
+                            <span class="input-focus-effect"></span>
+                        </div>
+                        <div class="input-group">
+                            <label for="sasToken">SAS Token</label>
+                            <input type="text" name="sasToken" id="sasToken" class="animated-input">
+                            <span class="input-focus-effect"></span>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- Container Details -->
+                <fieldset class="section" data-section="2">
+                    <legend><span class="section-number">2</span> Container Details</legend>
+                    <div class="grid">
+                        <div class="input-group">
+                            <label for="containerName">Container Name</label>
+                            <input type="text" name="containerName" id="containerName" required class="animated-input">
+                            <span class="input-focus-effect"></span>
+                        </div>
+                        <div class="input-group">
+                            <label for="blobName">Blob Name</label>
+                            <input type="text" name="blobName" id="blobName" required class="animated-input">
+                            <span class="input-focus-effect"></span>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- Admin Credentials -->
+                <fieldset class="section" data-section="3">
+                    <legend><span class="section-number">3</span> Admin Credentials</legend>
+                    <div class="grid">
+                        <div class="input-group">
+                            <label for="adminName">Admin Username</label>
+                            <input type="text" name="adminName" id="adminName" required class="animated-input">
+                            <span class="input-focus-effect"></span>
+                        </div>
+                        <div class="input-group">
+                            <label for="adminPassword">Admin Password</label>
+                            <div class="password-input-group">
+                                <input type="password" name="adminPassword" id="adminPassword" required class="animated-input">
+                                <button type="button" class="toggle-password" aria-label="Toggle password visibility">👁️</button>
+                                <span class="input-focus-effect"></span>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- Tenant Details -->
+                <fieldset class="section" data-section="4">
+                    <legend><span class="section-number">4</span> Tenant Details</legend>
+                    <div class="grid">
+                        <div class="input-group">
+                            <label for="tenantName">Tenant Name</label>
+                            <input type="text" name="tenantName" id="tenantName" required class="animated-input">
+                            <span class="input-focus-effect"></span>
+                        </div>
+                        <div class="input-group">
+                            <label for="tenantPassword">Tenant Password</label>
+                            <div class="password-input-group">
+                                <input type="password" name="tenantPassword" id="tenantPassword" required class="animated-input">
+                                <button type="button" class="toggle-password" aria-label="Toggle password visibility">👁️</button>
+                                <span class="input-focus-effect"></span>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- Mail IDs -->
+                <fieldset class="section" data-section="5">
+                    <legend><span class="section-number">5</span> Mail IDs</legend>
+                    <div class="input-group">
+                        <label for="mailIds">Mail IDs (comma-separated)</label>
+                        <textarea name="mailIds" id="mailIds" rows="3" placeholder="Enter email addresses separated by commas" required class="animated-input"></textarea>
+                        <span class="input-focus-effect"></span>
+                    </div>
+                </fieldset>
+
+                <!-- Additional Details -->
+                <fieldset class="section" data-section="6">
+                    <legend><span class="section-number">6</span> Additional Details</legend>
+                    <div class="grid">
+                        <div class="input-group">
+                            <label for="schemas">Schemas (comma-separated)</label>
+                            <input type="text" name="schemas" id="schemas" placeholder="Enter schemas separated by commas" class="animated-input">
+                            <span class="input-focus-effect"></span>
+                        </div>
+                        <div class="input-group">
+                            <label for="downloadPath">Download Path</label>
+                            <input type="text" name="downloadPath" id="downloadPath" placeholder="Enter custom download path" class="animated-input">
+                            <span class="input-focus-effect"></span>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- Navigation Buttons -->
+                <div class="form-navigation">
+                    <button type="button" id="prevButton" class="nav-button" disabled>Previous</button>
+                    <button type="button" id="nextButton" class="nav-button">Next</button>
+                    <button type="submit" id="submitButton" class="submit-button hidden">
+                        <span class="button-content" id="buttonContent">
+                            <svg class="icon" viewBox="0 0 24 24">
+                                <path d="M20 6L9 17l-5-5"/>
+                            </svg>
+                            Submit Request
+                        </span>
+                    </button>
+                </div>
+
+                <!-- Status Message -->
+                <div id="statusMessage" class="status-message hidden"></div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

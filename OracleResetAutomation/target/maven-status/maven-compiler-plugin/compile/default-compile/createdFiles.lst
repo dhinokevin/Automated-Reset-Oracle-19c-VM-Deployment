@@ -1,12 +1,12 @@
 com\example\OracleReset\ResetController.class
 com\example\OracleReset\services\DatabaseImporter.class
 com\example\OracleReset\services\BlobDownloader.class
-com\example\OracleReset\ResetApplication.class
 com\example\OracleReset\ResetRequest.class
 com\example\OracleReset\services\DatabaseDropper.class
 com\example\OracleReset\services\RollbackManager.class
 com\example\OracleReset\services\DatabaseValidator.class
+com\example\OracleReset\services\NotificationSender$1.class
+com\example\OracleReset\ResetApplication.class
 com\example\OracleReset\services\FileCleaner.class
 com\example\OracleReset\services\NotificationSender.class
-com\example\OracleReset\services\NotificationSender$1.class
 com\example\OracleReset\ResetService.class

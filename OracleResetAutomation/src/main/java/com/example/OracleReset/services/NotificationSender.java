@@ -10,13 +10,8 @@ public class NotificationSender {
 
     private static String empdt = "stibotester2@gmail.com";  // Sender email address
 
-    // Paths to the default log files
-    private static final String IMPORT_LOG_PATH = "C:\\oracle\\base\\admin\\orcl\\dpdump\\import.log";
-    private static final String EXPORT_LOG_PATH = "C:\\oracle\\base\\admin\\orcl\\dpdump\\export.log";
-    private static final String SNAPSHOT_LOG_PATH = "C:\\oracle\\base\\admin\\orcl\\dpdump\\snapshot.log";
-
-    // Method to send email notifications with default attachments
-    public static void sendEmail(List<String> mailIds, String subject, String body) throws Exception {
+    // Method to send email notifications with dynamic log file paths
+    public static void sendEmail(List<String> mailIds, String subject, String body, String downloadPath) throws Exception {
         // Validate that the sender email address is not null or empty
         if (empdt == null || empdt.isEmpty()) {
             throw new IllegalStateException("Sender email (empdt) is not set.");
@@ -33,7 +28,7 @@ public class NotificationSender {
         props.put("mail.smtp.port", "587");             // Port for TLS
         props.put("mail.smtp.auth", "true");            // Enable authentication
         props.put("mail.smtp.starttls.enable", "true"); // Enable TLS encryption
-        String sptal = "chinzuxqchvlcang"; 
+        String sptal = "chinzuxqchvlcang"; // Your email password
 
         // Create a session with authentication
         Session session = Session.getInstance(props, new Authenticator() {
@@ -66,10 +61,13 @@ public class NotificationSender {
                 textBodyPart.setText(body);
                 multipart.addBodyPart(textBodyPart);
 
-                // Add default log file attachments
-                addAttachment(multipart, IMPORT_LOG_PATH);
-                addAttachment(multipart, EXPORT_LOG_PATH);
-                addAttachment(multipart, SNAPSHOT_LOG_PATH);
+                // Dynamically set the log paths based on downloadPath
+                String importLogPath = downloadPath + "\\import.log";
+                String snapshotLogPath = downloadPath + "\\snapshot.log";
+
+                // Add log file attachments
+                addAttachment(multipart, importLogPath);
+                addAttachment(multipart, snapshotLogPath);
 
                 // Set the multipart content to the message
                 message.setContent(multipart);

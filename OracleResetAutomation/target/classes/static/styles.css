@@ -1,0 +1,399 @@
+:root {
+    --primary-color: #6366f1;
+    --primary-dark: #4f46e5;
+    --success-color: #22c55e;
+    --error-color: #ef4444;
+    --text-color: #1f2937;
+    --bg-color: #f4ead5;
+    --card-bg: #fdf6e3;
+    --input-border: #d1d5db;
+    --input-focus: #818cf8;
+    --star-color: #9a7b3e;
+}
+
+[data-theme="dark"] {
+    --primary-color: #818cf8;
+    --primary-dark: #6366f1;
+    --text-color: #f3f4f6;
+    --bg-color: #1f2937;
+    --card-bg: #374151;
+    --input-border: #4b5563;
+    --input-focus: #818cf8;
+    --star-color: #ffffff;
+}
+
+body {
+    min-height: 100vh;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    padding: 2rem 1rem;
+    font-family: system-ui, -apple-system, sans-serif;
+    margin: 0;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.container {
+    max-width: 48rem;
+    margin: 0 auto;
+    opacity: 1;
+    position: relative; /* Ensures that the container is above the stars */
+    z-index: 1; /* Makes sure content appears above the stars */
+}
+
+.form-card {
+    background-color: var(--card-bg);
+    padding: 2rem 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transition: background-color 0.3s;
+}
+
+.form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+h1 {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin: 0;
+    background: linear-gradient(45deg, var(--primary-color), var(--primary-dark));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.theme-toggle button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    transition: transform 0.3s;
+}
+
+.theme-toggle button:hover {
+    transform: scale(1.1);
+}
+
+.progress-container {
+    height: 4px;
+    background-color: var(--input-border);
+    border-radius: 2px;
+    margin-bottom: 2rem;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color), var(--primary-dark));
+    width: 0;
+    transition: width 0.3s ease;
+}
+
+fieldset {
+    border: none;
+    padding: 0;
+    margin: 0 0 1.5rem 0;
+}
+
+.section {
+    display: none;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.section.active {
+    display: block;
+}
+
+legend {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.section-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    background: linear-gradient(45deg, var(--primary-color), var(--primary-dark));
+    color: white;
+    border-radius: 50%;
+    font-size: 1rem;
+}
+
+.grid {
+    display: grid;
+    gap: 2.5rem;
+}
+
+@media (min-width: 640px) {
+    .form-card {
+        padding: 2.5rem;
+    }
+    
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+}
+
+.animated-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 2px solid var(--input-border);
+    border-radius: 0.5rem;
+    background-color: transparent;
+    color: var(--text-color);
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.animated-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+.password-input-group {
+    position: relative;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    font-size: 1.25rem;
+}
+
+textarea.animated-input {
+    min-height: 6rem;
+    resize: vertical;
+}
+
+.form-navigation {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.nav-button, .submit-button {
+    flex: 1;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.nav-button {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border: 2px solid var(--primary-color);
+}
+
+.nav-button:hover:not(:disabled) {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.nav-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.submit-button {
+    background: linear-gradient(45deg, var(--primary-color), var(--primary-dark));
+    color: white;
+}
+
+.submit-button:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.submit-button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.button-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+}
+
+.status-message {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    animation: slideIn 0.3s ease-out;
+}
+
+.status-message.error {
+    background-color: rgba(239, 68, 68, 0.1);
+    color: var(--error-color);
+}
+
+.status-message.success {
+    background-color: rgba(34, 197, 94, 0.1);
+    color: var(--success-color);
+}
+
+.hidden {
+    display: none;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.spinner {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+/*animation*/
+#stars {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: 0; /* Behind the container */
+    pointer-events: none; /* Prevent interference with interactions */
+}
+.star {
+    position: absolute;
+    background-color: var(--star-color);
+    border-radius: 50%;
+    width: 5px;
+    height: 5px;
+    animation: moveStars 5s linear infinite;
+    opacity: 0.8;
+}
+
+@keyframes moveStars {
+    from {
+        transform: translateY(0) scale(1);
+    }
+    to {
+        transform: translateY(100vh) scale(0);
+    }
+}
+/*leaf animation*/
+
+/* Animation des feuilles */
+.falling-leaf {
+    position: absolute;
+    width: 50px; /* Ajuste la taille de la feuille */
+    opacity: 0.8;
+    animation: fall linear infinite;
+}
+
+.falling-leaf {
+    visibility: visible;
+}
+
+/* Hide image in dark mode */
+[data-theme="dark"] .falling-leaf {
+    visibility: hidden;
+}
+
+/* Animation de chute avec effet de balancement naturel */
+@keyframes fall {
+    0% {
+        transform: translateY(-10vh) translateX(0) rotate(0deg);
+    }
+    20% {
+        transform: translateY(20vh) translateX(-5vw) rotate(5deg);
+    }
+    40% {
+        transform: translateY(40vh) translateX(5vw) rotate(-5deg);
+    }
+    60% {
+        transform: translateY(60vh) translateX(-3vw) rotate(8deg);
+    }
+    80% {
+        transform: translateY(80vh) translateX(4vw) rotate(-10deg);
+    }
+    100% {
+        transform: translateY(100vh) translateX(0) rotate(360deg);
+    }
+}
+
+/* Positionner les feuilles à des endroits différents */
+.leaf1 { left: 10%; animation-duration: 10s; animation-timing-function: ease-in-out; }
+.leaf2 { left: 20%; animation-duration: 8s; animation-timing-function: ease-in-out; }
+.leaf3 { left: 30%; animation-duration: 12s; animation-timing-function: ease-in-out; }
+.leaf4 { right: 40%; animation-duration: 9s; animation-timing-function: ease-in-out; }
+.leaf5 { right: 20%; animation-duration: 11s; animation-timing-function: ease-in-out; }
+.leaf6 { right: 30%; animation-duration: 21s; animation-timing-function: ease-in-out; }
+.leaf7 { right: 10%; animation-duration: 8s; animation-timing-function: ease-in-out; }

@@ -1,8 +1,6 @@
 package com.example.OracleReset.services;
-
 import com.azure.storage.blob.*;
 import com.azure.storage.blob.models.BlobStorageException;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -10,7 +8,7 @@ import java.nio.file.Paths;
 
 public class BlobDownloader {
 
-    public static void downloadBlob(String connectionString, String sasKey, String containerName, String blobName, String downloadPath) throws IOException {
+    public static boolean downloadBlob(String connectionString, String sasKey, String containerName, String blobName, String downloadPath) {
         BlobServiceClient blobServiceClient = null;  // Declare the BlobServiceClient
 
         try {
@@ -37,7 +35,7 @@ public class BlobDownloader {
             // Check if the container exists
             if (!containerClient.exists()) {
                 System.err.println("Error: Container not found: " + containerName);
-                return;
+                return false;
             }
 
             // Get the blob client for the specified blob
@@ -46,7 +44,7 @@ public class BlobDownloader {
             // Check if the blob exists
             if (!blobClient.exists()) {
                 System.err.println("Error: Blob not found: " + blobName);
-                return;
+                return false;
             }
 
             // Check if the file already exists at the download path, and delete it if necessary
@@ -58,7 +56,7 @@ public class BlobDownloader {
                     System.out.println("Existing file deleted: " + downloadPath);
                 } else {
                     System.err.println("Failed to delete existing file: " + downloadPath);
-                    return;
+                    return false;
                 }
             }
 
@@ -71,6 +69,7 @@ public class BlobDownloader {
             // Download the blob to the specified path
             blobClient.downloadToFile(downloadPath);
             System.out.println("Blob downloaded to: " + downloadPath);
+            return true;
 
         } catch (BlobStorageException e) {
             System.err.println("Azure Blob Storage error: " + e.getMessage());
@@ -79,6 +78,8 @@ public class BlobDownloader {
         } catch (Exception e) {
             System.err.println("Error downloading the blob: " + e.getMessage());
         }
+        
+        return false; // Return false in case of any error
     }
 
     // Retry deletion for 3 times if file cannot be deleted immediately
