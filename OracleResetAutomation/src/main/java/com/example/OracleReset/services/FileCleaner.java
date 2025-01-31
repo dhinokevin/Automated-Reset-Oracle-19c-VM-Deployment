@@ -5,10 +5,7 @@ import java.io.File;
 public class FileCleaner {
 
     // Method to check if the FULL_BACKUP.dmp file exists and delete it if present
-    public static boolean deleteExistingBackupFile(String blobname) {
-        // Define the file path for FULL_BACKUP.dmp
-        String filePath = "C:\\oracle\\base\\admin\\orcl\\dpdump\\"+blobname;
-        
+    public static boolean deleteExistingBackupFile(String filePath) {
         // Create a File object
         File backupFile = new File(filePath);
         
@@ -17,9 +14,9 @@ public class FileCleaner {
             // Delete the file if it exists
             boolean deleted = backupFile.delete();
             if (deleted) {
-                System.out.println("Existing backup file "+blobname+" deleted successfully.");
+                System.out.println("Existing backup file at " + filePath + " deleted successfully.");
             } else {
-                System.out.println("Failed to delete the existing backup file "+blobname);
+                System.out.println("Failed to delete the existing backup file at " + filePath);
             }
             return true; // File was deleted
         }
